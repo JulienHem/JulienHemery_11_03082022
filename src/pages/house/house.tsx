@@ -1,26 +1,27 @@
-import React, {useEffect, useState} from "react";
-import {getLogements} from "../../services/logementService";
-
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import LogementInterface from "../../interfaces/LogementInterface";
+import {getLogementsById} from "../../services/logementService";
 
 export function House() {
 
-    const [logements, setLogements] = useState<any>()
+    const {id} = useParams();
+    const [logement, setLogement] = useState<LogementInterface | null>(null)
 
     useEffect(() => {
-        const getLogementsData = async () => {
-            try {
-                setLogements(getLogements())
-            } catch (e) {
-                console.log(e)
-            }
+        const fetchLogement = (id: string) => {
+                try {
+                    setLogement(getLogementsById(id))
+                } catch (e) {
+                    console.log(e)
+                }
         }
-        getLogementsData()
-
-    })
+        id && fetchLogement(id)
+    }, [])
 
     return (
         <div>
-            C'est la home
+            C'est house {logement?.title}
         </div>
     )
 }

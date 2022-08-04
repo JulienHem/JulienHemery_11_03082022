@@ -2,15 +2,13 @@ export class Logement{
     public id: String;
     public title: String;
     public cover: String;
-    public pictures: Array<any>;
+    public pictures: String[];
     public description: String;
     public host: Object;
     public rating: String;
     public location: String;
-    public equipments: Array<any>;
-    public tags: Array<any>;
-    
-
+    public equipments: String[];
+    public tags: String[];
 
     constructor(data: any) {
         this.id = data.id;
@@ -23,7 +21,5 @@ export class Logement{
         this.location = data.location;
         this.equipments = data.equipments;
         this.tags = data.tags;
-        
     }
-
 }
