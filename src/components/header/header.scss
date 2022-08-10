@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    width: 145px;
+    min-height: 47px;
+  }
+
+
+  &-links {
+    display: flex;
+    gap: 1em;
+    color: #FF6060;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 200ms;
+
+    &:hover {
+      color: #ff3939;
+
+    }
+  }
+}

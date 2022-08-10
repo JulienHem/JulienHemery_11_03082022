@@ -1,12 +1,13 @@
 export default interface LogementInterface {
-    id: String;
-    title: String;
-    cover: String;
-    pictures: String[];
-    description: String;
-    host: Object;
-    rating: String;
-    location: String;
-    equipments: String[];
-    tags: String[];
+    id: string;
+    title: string;
+    cover: string;
+    pictures: string[];
+    description: string;
+    hostName: string;
+    hostImg: string;
+    rating: string;
+    location: string;
+    equipments: string[];
+    tags: string[];
 }

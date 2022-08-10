@@ -1,0 +1,36 @@
+.profile {
+
+  display: flex;
+  gap: 1em;
+  align-items: center;
+
+  &-title {
+    color: #ff3939;
+    font-size: 18px;
+    width: 70px;
+    text-align: end;
+  }
+
+  &-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+
+
+}
+
+
+@media (max-width: 950px) {
+
+  .profile {
+    &-title {
+      font-size: 12px
+    }
+
+    &-img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

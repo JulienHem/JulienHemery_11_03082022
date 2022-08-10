@@ -1,0 +1,31 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 6em
+}
+
+.cards {
+  display: flex;
+  gap: 3em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+@media (max-width: 935px) {
+
+  .home {
+    gap: 1em;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+  }
+
+}
+
+
