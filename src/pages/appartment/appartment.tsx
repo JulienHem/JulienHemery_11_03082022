@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {ReactElement, useEffect, useRef, useState} from "react";
 import LogementInterface from "../../interfaces/LogementInterface";
 import {getLogementsById} from "../../services/logementService";
 import './appartment.css';
@@ -7,15 +7,16 @@ import Tag from "../../components/tag/tag";
 import rightArrow from '../../assets/images/right_arrow.svg';
 import leftArrow from '../../assets/images/left_arrow.svg';
 import Profile from "../../components/profile/profile";
-import Star from "../../components/star/star";
+import StarIcon from "../../components/star-icon/star-icon";
+import {ratingStar} from "../../config/config";
+
 
 export function Appartment() {
 
     const {id} = useParams();
     const [logement, setLogement] = useState<LogementInterface | null>(null);
-    const [sliderIndex, setSliderIndex] = useState<number | any>(0);
+    const [sliderIndex, setSliderIndex] = useState<number>(0);
     const [rating, setRating] = useState<number>(0);
-
     const slideRef = useRef<any>(null);
 
     useEffect(() => {
@@ -28,32 +29,38 @@ export function Appartment() {
             }
         }
         id && fetchLogement(id)
-    }, [setRating])
+        console.log(logement?.rating)
+
+    }, [id])
 
     useEffect(() => {
-        setRating(parseInt(logement?.rating as string))
-    }, [setRating])
+        if(logement) {
+            setRating(parseInt(logement.rating))
+        }
+    }, [logement])
 
 
     const prevSlide = () => {
-        if (sliderIndex !== 0) {
-            setSliderIndex(sliderIndex - 1);
-            slideRef.current.style.setProperty('--slider-index', sliderIndex - 1)
-        }
-        if (sliderIndex  === 0) {
-            // @ts-ignore
-            setSliderIndex(logement?.pictures?.length)
+        if(logement?.pictures) {
+            if (sliderIndex > 0) {
+                setSliderIndex(sliderIndex - 1);
+                slideRef.current.style.setProperty('--slider-index', (sliderIndex - 1).toString())
+            } else {
+                setSliderIndex(logement.pictures.length - 1)
+                slideRef.current.style.setProperty('--slider-index', (logement.pictures.length - 1).toString())
+            }
         }
     }
 
     const nextSlide = () => {
-        if (sliderIndex !== logement?.pictures?.length) {
-            setSliderIndex(sliderIndex + 1);
-            slideRef.current.style.setProperty('--slider-index', sliderIndex + 1)
-        }
-        // @ts-ignore
-        if (sliderIndex + 1 === logement?.pictures?.length - 1 || sliderIndex + 1  === logement?.pictures?.length ) {
-            setSliderIndex(-1);
+        if(logement?.pictures) {
+            if (sliderIndex < logement.pictures.length - 1) {
+                setSliderIndex(sliderIndex + 1);
+                slideRef.current.style.setProperty('--slider-index', (sliderIndex + 1).toString())
+            } else {
+                setSliderIndex(0);
+                slideRef.current.style.setProperty('--slider-index', '0')
+            }
         }
     }
 
@@ -89,12 +96,14 @@ export function Appartment() {
                 <div className="appartment-content-right">
                     <Profile pic={logement?.hostImg} name={logement?.hostName}/>
                     <div className="stars">
-                        {[1, 2, 3, 4, 5].map((value) => (
-                            <Star
+                        {
+                            ratingStar.map((value) => (
+                            <StarIcon
                                 key={value}
                                 filled={rating >= value}
                             />
-                        ))}
+                        ))
+                        }
                     </div>
 
                 </div>
