@@ -9,6 +9,7 @@ import leftArrow from '../../assets/images/left_arrow.svg';
 import Profile from "../../components/profile/profile";
 import StarIcon from "../../components/star-icon/star-icon";
 import {ratingStar} from "../../config/config";
+import Dropdown from "../../components/dropdown/dropdown";
 
 
 export function Appartment() {
@@ -109,7 +110,11 @@ export function Appartment() {
                 </div>
 
             </div>
+            <div className="dropdowns">
 
+                <Dropdown title='Description' description={logement?.description} />
+                <Dropdown title='Equipements' equipments={logement?.equipments} />
+            </div>
 
         </div>
     )

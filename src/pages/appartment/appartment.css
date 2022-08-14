@@ -87,6 +87,12 @@
     min-width: 100%;
 }
 
+.dropdowns {
+    display: flex;
+    margin-top: 1em;
+    gap: 2em;
+}
+
 
 
 @media (max-width: 950px) {
@@ -132,6 +138,11 @@
 
     .appartment-content-subtitle {
         font-size: 14px;
+    }
+
+    .dropdowns {
+        display: flex;
+        flex-direction: column;
     }
 
 }
