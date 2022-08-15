@@ -1,0 +1,47 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #FF6060;
+  text-align: center;
+
+  h1 {
+    font-size: 280px;
+    margin-bottom: 0;
+    margin-top: 185px;
+  }
+
+  p {
+    font-size: 36px;
+  }
+
+  .link {
+    margin-top: 10em;
+    margin-bottom: 5em;
+    font-size: 18px;
+    color: #FF6060;
+  }
+}
+
+
+
+@media (max-width: 950px) {
+
+  .not-found {
+
+    h1 {
+      font-size: 96px;
+
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .link {
+      margin-top: 5em;
+      font-size: 14px;
+    }
+  }
+}

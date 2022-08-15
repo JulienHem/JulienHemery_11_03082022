@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {ReactElement, useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import LogementInterface from "../../interfaces/LogementInterface";
 import {getLogementsById} from "../../services/logementService";
 import './appartment.css';
@@ -9,7 +9,7 @@ import leftArrow from '../../assets/images/left_arrow.svg';
 import Profile from "../../components/profile/profile";
 import StarIcon from "../../components/star-icon/star-icon";
 import {ratingStar} from "../../config/config";
-import Dropdown from "../../components/dropdown/dropdown";
+import Collapse from "../../components/collapse/collapse";
 
 
 export function Appartment() {
@@ -32,7 +32,7 @@ export function Appartment() {
         id && fetchLogement(id)
         console.log(logement?.rating)
 
-    }, [id])
+    }, )
 
     useEffect(() => {
         if(logement) {
@@ -68,7 +68,7 @@ export function Appartment() {
     return (
         <div className="appartment">
             <div className="slider-container">
-                <img onClick={() => prevSlide()} className="left-arrow" src={leftArrow} alt="leftArrow"/>
+                <img onClick={() => prevSlide()} className={logement?.pictures.length !== 1 ? 'left-arrow' : 'hide'} src={leftArrow} alt="leftArrow"/>
 
                 <div className="slider" ref={slideRef}>
                     {
@@ -80,7 +80,7 @@ export function Appartment() {
                     }
 
                 </div>
-                <img onClick={() => nextSlide()} className="right-arrow" src={rightArrow} alt="leftArrow"/>
+                <img onClick={() => nextSlide()}  className={logement?.pictures.length !== 1 ? 'right-arrow' : 'hide'}  src={rightArrow} alt="leftArrow"/>
             </div>
             <div className="appartment-content">
                 <div className="appartment-content-left">
@@ -112,8 +112,8 @@ export function Appartment() {
             </div>
             <div className="dropdowns">
 
-                <Dropdown title='Description' description={logement?.description} />
-                <Dropdown title='Equipements' equipments={logement?.equipments} />
+                <Collapse title='Description' description={logement?.description} />
+                <Collapse title='Equipements' equipments={logement?.equipments} />
             </div>
 
         </div>

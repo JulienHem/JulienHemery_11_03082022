@@ -1,7 +1,8 @@
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import {Home} from "../../pages/home/home";
 import {Faq} from "../../pages/faq/faq";
 import {Appartment} from "../../pages/appartment/appartment";
+import PageNotFound from "../../pages/pageNotFound/pagenotfound";
 
 export default function Router() {
 
@@ -12,6 +13,7 @@ export default function Router() {
                 <Route path="/" element={<Home />}/>
                 <Route path="/faq" element={<Faq />}/>
                 <Route path="/house/:id" element={<Appartment />}/>
+                <Route path="*" element={<PageNotFound />}/>
             </Routes>
         </>
 
