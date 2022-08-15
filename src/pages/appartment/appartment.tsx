@@ -30,9 +30,7 @@ export function Appartment() {
             }
         }
         id && fetchLogement(id)
-        console.log(logement?.rating)
-
-    }, )
+    }, [id])
 
     useEffect(() => {
         if(logement) {
