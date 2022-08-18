@@ -39,9 +39,6 @@ export function Appartment() {
         }
     }, [logement])
 
-
-
-
     return (
         <div className="appartment">
             {
