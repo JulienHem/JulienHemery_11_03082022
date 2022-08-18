@@ -12,7 +12,7 @@ export default function Router() {
             <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/faq" element={<Faq />}/>
-                <Route path="/house/:id" element={<Appartment />}/>
+                <Route path="/appartment/:id" element={<Appartment />}/>
                 <Route path="*" element={<PageNotFound />}/>
             </Routes>
         </>

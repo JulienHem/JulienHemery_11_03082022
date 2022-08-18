@@ -28,7 +28,7 @@ export function Home() {
             <div className="cards">
             {logements
                 ? logements.map((logement, id) =>
-                    <Link key={id} to={`/house/${logement.id}`}>
+                    <Link key={id} to={`/appartment/${logement.id}`}>
                         <Card title={logement.title}/>
                     </Link>
                 )

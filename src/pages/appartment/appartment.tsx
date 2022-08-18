@@ -10,15 +10,16 @@ import Profile from "../../components/profile/profile";
 import StarIcon from "../../components/star-icon/star-icon";
 import {ratingStar} from "../../config/config";
 import Collapse from "../../components/collapse/collapse";
+import Slider from "../../components/slider/slider";
 
 
 export function Appartment() {
 
     const {id} = useParams();
     const [logement, setLogement] = useState<LogementInterface | null>(null);
-    const [sliderIndex, setSliderIndex] = useState<number>(0);
+
     const [rating, setRating] = useState<number>(0);
-    const slideRef = useRef<any>(null);
+
 
     useEffect(() => {
 
@@ -39,47 +40,13 @@ export function Appartment() {
     }, [logement])
 
 
-    const prevSlide = () => {
-        if(logement?.pictures) {
-            if (sliderIndex > 0) {
-                setSliderIndex(sliderIndex - 1);
-                slideRef.current.style.setProperty('--slider-index', (sliderIndex - 1).toString())
-            } else {
-                setSliderIndex(logement.pictures.length - 1)
-                slideRef.current.style.setProperty('--slider-index', (logement.pictures.length - 1).toString())
-            }
-        }
-    }
 
-    const nextSlide = () => {
-        if(logement?.pictures) {
-            if (sliderIndex < logement.pictures.length - 1) {
-                setSliderIndex(sliderIndex + 1);
-                slideRef.current.style.setProperty('--slider-index', (sliderIndex + 1).toString())
-            } else {
-                setSliderIndex(0);
-                slideRef.current.style.setProperty('--slider-index', '0')
-            }
-        }
-    }
 
     return (
         <div className="appartment">
-            <div className="slider-container">
-                <img onClick={() => prevSlide()} className={logement?.pictures.length !== 1 ? 'left-arrow' : 'hide'} src={leftArrow} alt="leftArrow"/>
-
-                <div className="slider" ref={slideRef}>
-                    {
-                        logement?.pictures?.map((picture, index) => {
-                            return (
-                                <img className="slider-img" src={picture} key={index} alt="img"/>
-                            )
-                        })
-                    }
-
-                </div>
-                <img onClick={() => nextSlide()}  className={logement?.pictures.length !== 1 ? 'right-arrow' : 'hide'}  src={rightArrow} alt="leftArrow"/>
-            </div>
+            {
+                logement && <Slider images={logement.pictures} />
+            }
             <div className="appartment-content">
                 <div className="appartment-content-left">
                     <div className="appartment-content-title">{logement?.title}</div>

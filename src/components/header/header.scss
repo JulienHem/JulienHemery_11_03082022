@@ -12,10 +12,17 @@
   &-links {
     display: flex;
     gap: 1em;
-    color: #FF6060;
     font-size: 14px;
     font-weight: 500;
     transition: color 200ms;
+
+    &-link-active {
+      text-decoration: underline;
+    }
+
+    a {
+      color: #FF6060;
+    }
 
     &:hover {
       color: #ff3939;
