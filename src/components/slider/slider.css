@@ -41,6 +41,12 @@
     min-width: 100%;
 }
 
+.slider-container-ref {
+    position: absolute;
+    top: 90%;
+    color: white;
+}
+
 @media (max-width: 950px) {
 
     .slider-container {
@@ -58,5 +64,13 @@
 
     .right-arrow {
         height: 20px;
+    }
+
+
+}
+
+@media ( max-width: 425px) {
+    .slider-container-ref {
+        display: none;
     }
 }

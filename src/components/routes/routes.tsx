@@ -6,7 +6,6 @@ import PageNotFound from "../../pages/pageNotFound/pagenotfound";
 
 export default function Router() {
 
-
     return (
         <>
             <Routes>
@@ -16,6 +15,5 @@ export default function Router() {
                 <Route path="*" element={<PageNotFound />}/>
             </Routes>
         </>
-
     )
 }

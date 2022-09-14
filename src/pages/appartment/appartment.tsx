@@ -1,11 +1,9 @@
-import {useParams} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect,  useState} from "react";
 import LogementInterface from "../../interfaces/LogementInterface";
 import {getLogementsById} from "../../services/logementService";
 import './appartment.css';
 import Tag from "../../components/tag/tag";
-import rightArrow from '../../assets/images/right_arrow.svg';
-import leftArrow from '../../assets/images/left_arrow.svg';
 import Profile from "../../components/profile/profile";
 import StarIcon from "../../components/star-icon/star-icon";
 import {ratingStar} from "../../config/config";
@@ -13,33 +11,38 @@ import Collapse from "../../components/collapse/collapse";
 import Slider from "../../components/slider/slider";
 
 
+
+
 export function Appartment() {
 
     const {id} = useParams();
     const [logement, setLogement] = useState<LogementInterface | null>(null);
-
     const [rating, setRating] = useState<number>(0);
-
+    let navigate = useNavigate();
 
     useEffect(() => {
-
         const fetchLogement = (id: string) => {
             try {
-                setLogement(getLogementsById(id))
+                setLogement(getLogementsById(id, navigate))
+
             } catch (e) {
                 console.log(e)
             }
         }
         id && fetchLogement(id)
-    }, [id])
+    }, [])
 
     useEffect(() => {
         if(logement) {
             setRating(parseInt(logement.rating))
         }
+
     }, [logement])
 
+
+
     return (
+
         <div className="appartment">
             {
                 logement && <Slider images={logement.pictures} />
@@ -68,12 +71,9 @@ export function Appartment() {
                         ))
                         }
                     </div>
-
                 </div>
-
             </div>
             <div className="dropdowns">
-
                 <Collapse title='Description' description={logement?.description} />
                 <Collapse title='Equipements' equipments={logement?.equipments} />
             </div>

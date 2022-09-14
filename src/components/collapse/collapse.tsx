@@ -2,18 +2,16 @@ import DownArrow from '../../assets/images/down_arrow.svg';
 
 import './collapse.scss';
 import {useState} from "react";
+
 interface IProps {
     title: string,
-    description?: string,
+    description ?: string,
     equipments ?: string[],
 }
 
 export default function Collapse({title, description, equipments}: IProps) {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-
-
-
 
     return (
         <div className={isOpen ? 'dropdown dropdown-opened' : 'dropdown'}>
@@ -30,11 +28,6 @@ export default function Collapse({title, description, equipments}: IProps) {
                     )}
                 </div>
             }
-
-
-
         </div>
-
-
     )
 }

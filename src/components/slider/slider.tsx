@@ -44,6 +44,7 @@ export default function Slider({images}: ISlider) {
                     })
                 }
             </div>
+            <div className="slider-container-ref">{sliderIndex + 1} / {images.length}</div>
             <img onClick={() => nextSlide()}  className={images.length !== 1 ? 'right-arrow' : 'hide'}  src={rightArrow} alt="leftArrow"/>
         </div>
     )

@@ -9,6 +9,8 @@
   gap: 3em;
   flex-wrap: wrap;
   justify-content: center;
+
+
 }
 
 
@@ -23,7 +25,9 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-
+    &-link {
+      width: 100%;
+    }
   }
 
 }
